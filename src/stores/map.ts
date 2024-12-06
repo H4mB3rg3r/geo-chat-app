@@ -259,7 +259,7 @@ export const useMapStore = defineStore('map', () => {
         className: 'custom-div-icon',
         html:
           `<div class='marker-pin-green'> 
-        <img class="pin-avatar" src="${coordinate.user_uuid === appStore.user.uuid ? appStore.user.image_url : appStore.getUserImage(coordinate.user_uuid as string)}" alt="Avatar">   
+        <img class="pin-avatar" src="${coordinate.user_uuid === appStore.user.uuid ? appStore.user.image_url ?? '/get-chat-circle-logo.png' : appStore.getUserImage(coordinate.user_uuid as string)}" alt="Avatar">   
         </div>  
         `,
         iconSize: [30, 42],
@@ -294,7 +294,7 @@ export const useMapStore = defineStore('map', () => {
           </div>
         </div>
         <div class="is-flex justify-content-center flex-direction-column align-items-center">
-          <img class="p-1 img-avatar" src="${marker.user_uuid === appStore.user.uuid ? appStore.user.image_url : appStore.getUserImage(marker.user_uuid as string)}" alt="Avatar">
+          <img class="p-1 img-avatar" src="${marker.user_uuid === appStore.user.uuid ? appStore.user.image_url ?? '/get-chat-circle-logo.png' : appStore.getUserImage(marker.user_uuid as string)}" alt="Avatar">
           <h1 class="img-avatar-name"> ${content[1]}  </h1>
         </div>
         <div>
@@ -319,7 +319,7 @@ export const useMapStore = defineStore('map', () => {
       className: 'custom-div-icon',
       html:
         `<div class='marker-pin-green'> 
-        <img class="pin-avatar" src="${marker.user_uuid === appStore.user.uuid ? appStore.user.image_url : appStore.getUserImage(marker.user_uuid as string)}" alt="Avatar">   
+        <img class="pin-avatar" src="${marker.user_uuid === appStore.user.uuid ? appStore.user.image_url ?? '/get-chat-circle-logo.png' : appStore.getUserImage(marker.user_uuid as string)}" alt="Avatar">   
         </div>  
         `,
       iconSize: [30, 42],

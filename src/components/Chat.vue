@@ -36,7 +36,7 @@
         class="file-input" />
       <button @click="triggerFileInput" class="attach-file-button ">Attach File</button>
       <EditorContent :editor="editor" class="editor" @keydown="handleKeyDown" />
-      <button @click="sendMessage" class="send-button">Send</button>
+      <button @click="sendMessage" class="send-button" :disabled="isEditorEmpty">Send</button>
     </div>
   </div>
 </template>
@@ -73,6 +73,8 @@
   const users = computed(() => {
     return appStore.friends
   })
+
+  const isEditorEmpty = computed(() => editor.value?.isEmpty ?? true)
 
   const channel = computed(() => {
     console.log('appStore.selectedChannel', appStore.selectedChannel)
@@ -120,6 +122,7 @@
 
   // Send Message Handler
   const sendMessage = async () => {
+    if (!editor.value || editor.value.isEmpty) return
     if (editor.value) {
       const content = editor.value.getHTML().trim()
       if (content) {
@@ -140,7 +143,9 @@
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault() // Prevent new line
-      sendMessage() // Send message
+      if (editor.value && !editor.value.isEmpty) {
+        sendMessage() // Send message if editor is not empty
+      }
     }
   }
 
@@ -362,6 +367,13 @@
   .send-button:hover,
   .attach-file-button:hover {
     background-color: #0056b3;
+  }
+
+  .send-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   /* Mobile Responsive Design */

@@ -99,8 +99,7 @@
   }
 
   .btn-secondary {
-    /* background-color: #6c757d; */
-    background-color: green;
+    background-color: #6c757d;
     color: white;
   }
 </style>

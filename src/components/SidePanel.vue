@@ -208,8 +208,11 @@
   }
 
   .side-panel-header h1 {
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 1.6rem;
+    color: #f3f2f2;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow for better readability */
   }
 
   .section-header {

@@ -269,7 +269,7 @@
 
 <style scoped>
 
-  .chat-container {
+.chat-container {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -284,7 +284,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color:rgb(60, 61, 55);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -292,35 +292,47 @@
 
   .btn-secondary {
     padding: 8px 12px;
-    background-color: #4c4c4c;
-    color: white;
+    background-color: rgb(154, 191, 128);
+    color: rgb(19, 18, 18);
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  }
+  .btn-secondary:hover{
+    background-color: #189422;
+    
   }
 
   .channel-header {
     text-align: center;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: rgb(105, 117, 101);
+    color: rgb(245, 243, 243);
   }
 
   .message-list {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-    background-color: #f9f9f9;
-  }
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f5f5f5; /* Light background for contrast */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add spacing between messages */
+}
 
-  .message {
-    padding: 8px 12px;
-    margin-bottom: 5px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  }
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Add spacing between name and content */
+  align-self: flex-start;
+  max-width: 70%;
+}
+
+.message-name {
+  font-weight: bold;
+  color: #555;
+  font-size: 12px; /* Smaller font for names */
+}
 
   /* .message-content {
     background-color: #4c4c4c;
@@ -333,28 +345,45 @@
   } */
 
   .message-content {
-    background-color: #4c4c4c;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-    /* max-width: 70%; */
-    width: fit-content;
-    /* Width adjusts to the content */
-    word-wrap: break-word;
-    /* Ensures words wrap if they exceed max width */
-    white-space: pre-wrap;
-    /* Preserves line breaks and spaces */
+  background-color: #ffffff;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  word-wrap: break-word;
+  max-width: 100%;
+}
+.own-message-content {
+  background-color: #d1ffd7; /* Light green for sent messages */
+}
+.message-content img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%; /* Allow messages to take up more space on smaller screens */
+  }
+}
+.editor-container {
+    display: flex;
+    padding: 15px;
+    background-color: rgb(236, 223, 204);
+    border-top: 1px solid #ddd;
+    align-items: center;
   }
 
   .own-message {
-    align-items: flex-end;
-  }
+  align-self: flex-end; /* Align own messages to the right */
+}
 
-  .own-message-content {
-    background-color: #0080ff;
-  }
-
+.own-message-name {
+  color: #333; /* Slightly darker name for own messages */
+}
   .editor-container {
     display: flex;
     padding: 10px;
@@ -363,21 +392,27 @@
     align-items: center;
   }
 
-  .editor {
+   .editor {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 4px solid #222020;
+    border-radius: 20px;
   }
 
   .send-button,
   .attach-file-button {
-    padding: 8px 12px;
-    background-color: #007bff;
+    padding: 8px 20px;
+    background-color: rgb(105, 117, 101);
     color: white;
     border: none;
-    border-radius: 4px;
-    margin-left: 10px;
+    border-radius: 20px;
+    margin-left: 10 px;
+  }
+  .send-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   .send-button:hover,
@@ -389,7 +424,7 @@
   @media (max-width: 768px) {
 
     .message-content {
-      max-width: 90%;
+      max-width: 40%;
     }
 
     .btn-container {

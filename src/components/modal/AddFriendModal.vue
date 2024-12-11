@@ -7,6 +7,7 @@
           <label for="friendEmail">Friend's Email</label>
           <input class="input-text-modal" id="friendEmail" type="email" v-model="friendEmail"
             placeholder="Enter friend's email" required :disabled="isEditMode" />
+            <span v-if="!isEmailAddressExists && friendEmail" class="error-message">User's email address not found.</span>
         </div>
         <div v-if="isEditMode" class="form-group">
           <label for="friendEmail">Friend's fullname</label>
@@ -78,6 +79,13 @@
 </script>
 
 <style scoped>
+  .error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+    display: block;
+  }
+
   .modal-overlay {
     position: fixed;
     top: 0;

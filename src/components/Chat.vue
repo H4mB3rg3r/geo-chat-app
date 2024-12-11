@@ -21,13 +21,33 @@
     <div ref="messageContainer" class="message-list">
       <div v-for="(msg, index) in appStore.selectedMessages" :key="index" class="message"
         :class="{ 'own-message': msg.user?.uuid === appStore.user.uuid }">
+
+
         <strong :class="{ 'own-message-name': msg.user?.uuid === appStore.user.uuid }" class="message-name">
           <!-- {{ appStore.getUserFullname(msg.user?.uuid ?? '') }} -->
           {{ msg.user?.fullname }}
         </strong>
-        <span :class="{ 'own-message-content': msg.user?.uuid === appStore.user.uuid }" class="message-content"
-          v-html="appStore.decryptMessages[index]">
-        </span>
+        <div class="bubble-container">
+          <div style="margin-right: 0.2rem !important;" v-if="msg.user?.uuid !== appStore.user.uuid">
+
+            <img v-if="msg.user?.image_url" :src="appStore.getUserImage(msg.user.image_url)" alt="Profile Picture"
+              class="profile-pic" />
+            <span v-else class="image-circle">{{ msg.user?.fullname.charAt(0).toUpperCase() }}</span>
+          </div>
+
+          <!-- <img v-else
+            :src="appStore.user.image_url ? appStore.getUserImage(appStore.user.image_url) : '/get-chat-circle-logo.png'"
+            alt="Profile Picture" class="profile-pic" /> -->
+          <span :class="{ 'own-message-content': msg.user?.uuid === appStore.user.uuid }" class="message-content"
+            v-html="appStore.decryptMessages[index]">
+          </span>
+          <div style="margin-left: 0.2rem !important;" v-if="msg.user?.uuid === appStore.user.uuid">
+            <img v-if="appStore.user.image_url" :src="appStore.getUserImage(appStore.user.image_url)"
+              alt=" Profile Picture" class="profile-pic" />
+            <span v-else class="image-circle">{{ msg.user?.fullname.charAt(0).toUpperCase() }}</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -36,7 +56,7 @@
         class="file-input" />
       <button @click="triggerFileInput" class="attach-file-button ">Attach File</button>
       <EditorContent :editor="editor" class="editor" @keydown="handleKeyDown" />
-      <button @click="sendMessage" class="send-button" :disabled="isEditorEmpty">Send</button>
+      <button @click="sendMessage" class="send-button">Send</button>
     </div>
   </div>
 </template>
@@ -73,8 +93,6 @@
   const users = computed(() => {
     return appStore.friends
   })
-
-  const isEditorEmpty = computed(() => editor.value?.isEmpty ?? true)
 
   const channel = computed(() => {
     console.log('appStore.selectedChannel', appStore.selectedChannel)
@@ -122,7 +140,6 @@
 
   // Send Message Handler
   const sendMessage = async () => {
-    if (!editor.value || editor.value.isEmpty) return
     if (editor.value) {
       const content = editor.value.getHTML().trim()
       if (content) {
@@ -143,9 +160,7 @@
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault() // Prevent new line
-      if (editor.value && !editor.value.isEmpty) {
-        sendMessage() // Send message if editor is not empty
-      }
+      sendMessage() // Send message
     }
   }
 
@@ -304,6 +319,7 @@
     border-radius: 6px;
     display: flex;
     flex-direction: column;
+    align-items: left;
   }
 
   /* .message-content {
@@ -369,13 +385,6 @@
     background-color: #0056b3;
   }
 
-  .send-button:disabled {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-
   /* Mobile Responsive Design */
   @media (max-width: 768px) {
 
@@ -392,5 +401,39 @@
       flex-direction: row;
       gap: 10px;
     }
+  }
+
+  .profile-pic {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    /* margin-right: 10px; */
+  }
+
+  .own-message .profile-pic {
+    order: 1;
+    /* Moves the profile picture to the right for own messages */
+
+    margin-right: 0;
+  }
+
+  .bubble-container {
+    display: flex;
+  }
+
+  .image-circle {
+    order: 100 !important;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: blue;
   }
 </style>

@@ -184,17 +184,19 @@
 </script>
 
 <style scoped>
-  .side-panel {
+   .side-panel {
     display: flex;
     flex-direction: column;
     width: auto;
     max-width: 350px;
-    background-color: #f4f6f8;
+    background: linear-gradient(145deg, #d4d4d4, #e8e8e8); /* Soft gradient background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
     padding: 1rem;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #ccc;
     gap: 1rem;
     justify-content: space-between;
-    height: 100%;
+    height: 100vh;
+    border-radius: 10px; /* Rounded corners */
   }
 
   .side-panel-header {

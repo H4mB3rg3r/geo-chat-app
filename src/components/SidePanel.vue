@@ -196,10 +196,12 @@
     gap: 1rem;
     justify-content: space-between;
     height: 100vh;
-    border-radius: 10px; /* Rounded corners */
   }
 
   .side-panel-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     background: linear-gradient(90deg, rgb(85, 105, 95), rgb(125, 140, 130));
     border-radius: 20px;

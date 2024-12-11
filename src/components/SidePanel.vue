@@ -189,9 +189,9 @@
     flex-direction: column;
     width: auto;
     max-width: 350px;
-    background-color: #2a60cc;
+    background-color: #f3f4f6;
     padding: 1rem;
-    border-right: 1px solid #cf1616;
+    border-right: 1px solid #ddd;
     gap: 1rem;
     justify-content: space-between;
     height: 100%;

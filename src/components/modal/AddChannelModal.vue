@@ -123,26 +123,46 @@
 </script>
 
 <style scoped>
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
+   .modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Darker backdrop for better contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
   }
 
-  .modal {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 400px;
-    max-width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.modal {
+  background: linear-gradient(135deg, #ffffff, #f0f5ff); /* Light gradient background */
+  padding: 2rem;
+  border-radius: 16px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  border: 2px solid #007bff;
+  animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    }
+  }
+
+  h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #003366; /* Navy blue for contrast */
+  margin-bottom: 1rem;
   }
 
   .form-group {
@@ -150,26 +170,28 @@
   }
 
   .form-group label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 0.5rem;
+  display: block;
   }
 
-  .input-text-modal {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+  .input-text-modal:focus {
+  border-color: #007bff;
+  outline: none;
   }
 
   .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    height: 150px;
-    overflow-y: auto;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  height: 150px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
 
   .checkbox-item {
     display: flex;
@@ -188,25 +210,39 @@
   }
 
   .btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
+.btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Vibrant gradient */
+  color: white;
+}
 
-  .btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80); /* Darker gradient on hover */
+}
 
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-  }
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #495057); /* Neutral gradient */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #495057, #343a40); /* Darker neutral gradient */
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545, #a71d2b); /* Gradient red */
+  color: white;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #a71d2b, #800f1a); /* Darker red gradient */
+}
+
 </style>

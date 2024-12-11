@@ -201,6 +201,10 @@
 
   .side-panel-header {
     text-align: center;
+    background: linear-gradient(90deg, rgb(85, 105, 95), rgb(125, 140, 130));
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   .side-panel-header h1 {

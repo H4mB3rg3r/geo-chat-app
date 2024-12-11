@@ -191,7 +191,7 @@
     max-width: 350px;
     background-color: #2a60cc;
     padding: 1rem;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #cf1616;
     gap: 1rem;
     justify-content: space-between;
     height: 100%;

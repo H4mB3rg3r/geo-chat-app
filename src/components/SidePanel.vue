@@ -221,16 +221,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
   }
 
   .section-header h2 {
     font-size: 1.2rem;
     color: #333;
+    font-weight: bold;
   }
 
-  .ul-section {
+  button {
+  width: 40px; /* Set equal width and height */
+  height: 40px;
+  border-radius: 50%; /* Makes the button a circle */
+  background-color: #08b408; /* Default button background */
+  color: white; /* Text color */
+  border: none; /* Removes border */
+  display: flex; /* Centers content */
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem; /* Adjust font size */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Adds smooth hover effect */
+}
+
+button:hover {
+  background-color: #018d08; /* Darker shade of blue on hover */
+}
+
+.ul-section {
     height: 45vh;
     overflow-y: auto;
+    background: rgba(255, 255, 255, 0.5); /* Subtle background for lists */
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1); /* Inset shadow for depth */
   }
 
   ul {
@@ -243,31 +268,41 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #dcdcdc;
+    border-radius: 5px;
+    background: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
   li:hover {
-    background-color: #e0f3ff;
+    background-color: #f0faff; /* Light hover effect */
+    transform: scale(1.02); /* Slight zoom on hover */
   }
 
   li.active {
-    background-color: #b3e0ff;
+    background: rgb(105, 117, 101);
+    color: white;
+    font-weight: bold;
   }
 
   .edit-button {
-    background-color: #f3f4f6;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 2px 8px;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 0.8rem;
+    width: 40px; /* Set equal width and height */
+  height: 40px;
+  border-radius: 50%; /* Makes the button a circle */
+  background-color: #08b408; /* Default button background */
+  color: white; /* Text color */
+  border: none; /* Removes border */
+  display: flex; /* Centers content */
+  align-items: center;
+  justify-content: center;
+  font-size: 15px; /* Adjust font size */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease; 
   }
 
   .edit-button:hover {
-    background-color: #ddd;
+    background-color: #0056b3;
   }
 
   .logout-section {
@@ -278,16 +313,120 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    background: rgba(255, 255, 255, 0.6); /* Subtle semi-transparent background */
+    border-radius: 8px;
+    padding: 10px;
   }
 
   .btn {
     padding: 8px 12px;
-    /* background-color: #007bff; */
-    /* color: white; */
+    font-size: 11px;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background-color: #ec0606;
+  }
+
+  .channels, 
+  .friends {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1; /* Allows both sections to grow and share space equally */
+  }
+
+  .channels .ul-section,
+.friends .ul-section {
+  flex-grow: 1; /* Ensures scrollable sections fill available space */
+  max-height: calc(50vh - 3rem); /* Limit height to half of the viewport minus some padding */
+  overflow-y: auto; /* Enable scrolling for overflowing content */
+  background: rgba(255, 255, 255, 0.5); /* Subtle background for lists */
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1); /* Inset shadow for depth */
+  scrollbar-width: thin; /* Thin scrollbar for Firefox */
+  scrollbar-color: #303336 #f0f0f0; /* Custom colors for Firefox */
+}
+
+.channels .ul-section::-webkit-scrollbar,
+.friends .ul-section::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.channels .ul-section::-webkit-scrollbar-thumb,
+.friends .ul-section::-webkit-scrollbar-thumb {
+  background: #007bff; /* Scrollbar thumb color */
+  border-radius: 8px; /* Rounded edges for the scrollbar thumb */
+}
+
+.channels .ul-section::-webkit-scrollbar-thumb:hover,
+.friends .ul-section::-webkit-scrollbar-thumb:hover {
+  background: #0056b3; /* Darker color on hover */
+}
+
+.channels .ul-section::-webkit-scrollbar-track,
+.friends .ul-section::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Scrollbar track background */
+  border-radius: 8px;
+}
+
+.channels ul,
+.friends ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.channels li,
+.friends li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #dcdcdc;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.channels li:hover,
+.friends li:hover {
+  background-color: #f0faff; /* Light hover effect */
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.channels li.active,
+.friends li.active {
+  background: rgb(105, 117, 101); /* Active state background */
+  color: white;
+  font-weight: bold;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 
   .btn:hover {
     background-color: #0056b3;

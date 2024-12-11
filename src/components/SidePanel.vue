@@ -189,7 +189,7 @@
     flex-direction: column;
     width: auto;
     max-width: 350px;
-    background-color: #f3f4f6;
+    background-color: #f4f6f8;
     padding: 1rem;
     border-right: 1px solid #ddd;
     gap: 1rem;

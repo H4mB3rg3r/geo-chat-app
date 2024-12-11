@@ -199,6 +199,7 @@
 
   .side-panel-header {
     text-align: center;
+    background-color: #052b75;
   }
 
   .side-panel-header h1 {

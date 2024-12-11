@@ -45,7 +45,7 @@
 
     <!-- Logout Section -->
     <section class="logout-section">
-      <button class="btn btn-seconday" @click="appStore.logoutUser">Logout</button>
+      <button class="btn btn-secondary" @click="appStore.logoutUser">Logout</button>
       <button v-if="appStore.friendshipRequestList.length" class="btn btn-primary"
         @click="openFriendRequestModal">Friend Requests</button>
       <button class="btn btn-primary" @click="appStore.clickUserBtn">User</button>
@@ -234,7 +234,7 @@
   width: 40px; /* Set equal width and height */
   height: 40px;
   border-radius: 50%; /* Makes the button a circle */
-  background-color: #08b408; /* Default button background */
+  background-color: rgb(154, 191, 128); /* Default button background */
   color: white; /* Text color */
   border: none; /* Removes border */
   display: flex; /* Centers content */
@@ -289,8 +289,8 @@ button:hover {
   .edit-button {
     width: 40px; /* Set equal width and height */
   height: 40px;
-  border-radius: 50%; /* Makes the button a circle */
-  background-color: #08b408; /* Default button background */
+  border-radius: 15%; /* Makes the button a circle */
+  background-color: rgb(154, 191, 128); /* Default button background */
   color: white; /* Text color */
   border: none; /* Removes border */
   display: flex; /* Centers content */
@@ -330,19 +330,20 @@ button:hover {
   .btn-primary {
     background-color: #007bff;
     color: white;
+    
   }
 
   .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #09dd09;
   }
 
   .btn-secondary {
-    background-color: #6c757d;
+    background-color: #e90404;
     color: white;
   }
 
   .btn-secondary:hover {
-    background-color: #ec0606;
+    background-color: #800404;
   }
 
   .channels, 
@@ -429,7 +430,7 @@ button:hover {
 
 
   .btn:hover {
-    background-color: #0056b3;
+    background-color: #0681a7;
     color: white;
   }
 </style>

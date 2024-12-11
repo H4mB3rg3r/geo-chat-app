@@ -44,7 +44,7 @@
 
       <div class="form-actions">
         <button type="submit" class="btn btn-primary" :disabled="!isPasswordMatched">
-          {{ hasUser ? 'Update User' : 'Register User' }}
+          {{ hasUser ? 'Update User' : 'Register User'}}
         </button>
         <button type="button" class="btn btn-secondary" @click="cancel">
           Cancel

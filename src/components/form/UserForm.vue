@@ -234,14 +234,14 @@ onMounted(() => {
   .user-form {
     max-width: 400px;
     margin: auto;
-    padding: 6rem;
+    padding: 5rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .form-group {
-    margin-bottom: -0.1rem;
+    margin-bottom: 1rem;
   }
 
   .form-actions {
@@ -311,7 +311,7 @@ onMounted(() => {
     bottom: 0px;
     right: 2rem;
     width: 6rem;
-    height: 3rem;
+    height: 5rem;
     opacity: 0;
     cursor: pointer;
     top: 5rem;

@@ -4,7 +4,7 @@
       <SidePanel />
     </aside>
     
-    <section :class="isMobile && route.name === 'user-detail' ?'mobile' : ''">
+    <section :class="isMobile && isFlex ? 'mobile' : ''">
       <div class="side-panel-mobile">
         <SidePanel v-if="isMobile && route.name === 'home'"/>
       </div>
@@ -13,21 +13,29 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import SidePanel from '../SidePanel.vue';
-  import { computed, onMounted } from 'vue';
+  import { computed, onMounted, ref } from 'vue';
   import { useAppStore } from '../../stores/app';
   import UserForm from '../form/UserForm.vue';
-import { useRoute } from 'vue-router';
+  import { useRoute } from 'vue-router';
 
   const route = useRoute()
   const isMobile = computed(() => window.innerWidth <= 768);
+  const flexPages = ref(['user-detail'])
+  
+  const isFlex = computed(() => {
+    console.log('@__ route.name :: ', route.name)
+    return flexPages.value.includes(route.name as string)
+  })
 
   const appStore = useAppStore()
 
   const loginUser = computed(() => {
     return appStore.user
   })
+
+
 
   onMounted(() => {
 

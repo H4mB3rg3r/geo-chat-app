@@ -69,10 +69,7 @@
 </script>
 
 <style scoped>
-.login-container {
-  background-image: url('chat.jpg');
- 
-}
+
   .login-form {
   background: linear-gradient(135deg, #51f15ec0, #4056d6c5);
   padding: 40px;

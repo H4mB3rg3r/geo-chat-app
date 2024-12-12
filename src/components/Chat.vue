@@ -249,7 +249,7 @@
 
 <style scoped>
 
-  .chat-container {
+.chat-container {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -283,7 +283,6 @@
     
   }
 
-
   .channel-header {
     text-align: center;
     padding: 10px;
@@ -309,21 +308,23 @@
   max-width: 70%;
 }
 
-.own-message {
-  align-self: flex-end; /* Align own messages to the right */
-}
-
 .message-name {
   font-weight: bold;
   color: #555;
   font-size: 12px; /* Smaller font for names */
 }
 
-.own-message-name {
-  color: #333; /* Slightly darker name for own messages */
-}
+  /* .message-content {
+    background-color: #4c4c4c;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    max-width: 40%;
+    word-wrap: break-word;
+  } */
 
-.message-content {
+  .message-content {
   background-color: #ffffff;
   color: #333;
   padding: 10px 15px;
@@ -334,26 +335,22 @@
   word-wrap: break-word;
   max-width: 100%;
 }
-
 .own-message-content {
   background-color: #d1ffd7; /* Light green for sent messages */
+  
 }
-
 .message-content img {
   max-width: 100%;
   border-radius: 10px;
   margin-top: 5px;
 }
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .message {
     max-width: 90%; /* Allow messages to take up more space on smaller screens */
   }
 }
-
-
-  .editor-container {
+.editor-container {
     display: flex;
     padding: 15px;
     background-color: rgb(236, 223, 204);
@@ -361,7 +358,22 @@
     align-items: center;
   }
 
-  .editor {
+  .own-message {
+  align-self: flex-end; /* Align own messages to the right */
+}
+
+.own-message-name {
+  color: #333; /* Slightly darker name for own messages */
+}
+  .editor-container {
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    align-items: center;
+  }
+
+   .editor {
     flex: 1;
     padding: 10px;
     border: 4px solid #222020;
@@ -375,7 +387,7 @@
     color: white;
     border: none;
     border-radius: 20px;
-    margin-left: 10px;
+    margin-left: 10 px;
   }
   .send-button:disabled {
     background-color: #cccccc;
@@ -394,7 +406,6 @@
 
     .message-content {
       max-width: 40%;
-      
     }
 
     .btn-container {
@@ -406,5 +417,40 @@
       flex-direction: row;
       gap: 10px;
     }
+  }
+
+  .profile-pic {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    /* margin-right: 10px; */
+  }
+
+  .own-message .profile-pic {
+    order: 1;
+    /* Moves the profile picture to the right for own messages */
+
+    margin-right: 0;
+  }
+
+  .bubble-container {
+    display: flex;
+  }
+
+  .image-circle {
+    order: 100 !important;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 2px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: blue;
+
   }
 </style>

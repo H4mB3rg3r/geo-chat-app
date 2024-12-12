@@ -164,9 +164,28 @@
 .btn-secondary:hover {
   background: #f1f8e9;
 }
-.form-actions {
-  display: flex;
-  flex-direction: column; /* Stack the buttons vertically */
-  gap: 10px; /* Adds space between the two buttons */
+
+
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
+  .login-form {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  .input-text-modal {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
 </style>

@@ -240,7 +240,7 @@ onMounted(() => {
   }
 
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 3.3rem;
   }
 
   .form-actions {
@@ -325,5 +325,38 @@ onMounted(() => {
     background-color: #ccc;
     cursor: not-allowed;
     color: #6c757d;
+  }
+
+   /* Responsive styles for smaller screens */
+   @media (max-width: 600px) {
+    .user-form {
+      padding: 1rem;
+    }
+
+    .form-actions {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .user-image {
+      margin: auto;
+    }
+
+    .image-circle {
+      width: 8rem;
+      height: 8rem;
+      font-size: 3rem;
+    }
+
+    .image-upload-btn {
+      width: 4rem;
+      height: 8rem;
+      top: 4rem;
+      right: 1rem;
+    }
   }
 </style>

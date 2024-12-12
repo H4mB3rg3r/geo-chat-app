@@ -4,7 +4,7 @@
       <SidePanel />
     </aside>
     
-    <section :class="isMobile && route.name !== 'home'?'mobile' : ''">
+    <section :class="isMobile && route.name === 'user-detail' ?'mobile' : ''">
       <div class="side-panel-mobile">
         <SidePanel v-if="isMobile && route.name === 'home'"/>
       </div>

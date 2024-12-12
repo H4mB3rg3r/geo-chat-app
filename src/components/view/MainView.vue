@@ -3,18 +3,13 @@
     <aside class="left">
       <SidePanel />
     </aside>
-    <section>
-      <!-- <Chat />
-        <Map /> -->
-
-      <RouterView />
+    
+    <section :class="isMobile && route.name !== 'home'?'mobile' : ''">
       <div class="side-panel-mobile">
-        <SidePanel />
+        <SidePanel v-if="isMobile && route.name === 'home'"/>
       </div>
+      <RouterView />
     </section>
-    <!-- <aside class="right">
-        <UserForm :initialUser="loginUser" @submit="handleFormSubmit" @cancel="closeForm" />
-      </aside> -->
   </main>
 </template>
 
@@ -23,6 +18,10 @@
   import { computed, onMounted } from 'vue';
   import { useAppStore } from '../../stores/app';
   import UserForm from '../form/UserForm.vue';
+import { useRoute } from 'vue-router';
+
+  const route = useRoute()
+  const isMobile = computed(() => window.innerWidth <= 768);
 
   const appStore = useAppStore()
 
@@ -54,4 +53,12 @@
   .side-panel-mobile {
     display: none;
   }
+  .mobile {
+    display: flex !important;
+    justify-content: center;
+  }
+
+
+
+  
 </style>

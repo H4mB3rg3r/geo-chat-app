@@ -86,7 +86,10 @@
               </div>
             </div>
           </div>
-
+          <div class="success-notification">
+            <span v-if="showNotification" >{{ notificationMessage }}</span>
+          </div>
+          
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">
               {{ hasUser ? "Update User" : "Register User" }}
@@ -230,6 +233,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.form-wrapper {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
   .user-form {
     max-width: 400px;
     margin: auto;
@@ -310,7 +318,7 @@ onMounted(() => {
     bottom: 0px;
     right: 2rem;
     width: 6rem;
-    height: 10rem;
+    height: 2rem;
     opacity: 0;
     cursor: pointer;
     top: 5rem;
@@ -354,9 +362,15 @@ onMounted(() => {
 
     .image-upload-btn {
       width: 4rem;
-      height: 8rem;
+      height: 2rem;
       top: 4rem;
       right: 1rem;
     }
+  }
+
+  .success-notification {
+    margin: 1rem;
+    text-align: center;
+    background-color: #90EE90;
   }
 </style>

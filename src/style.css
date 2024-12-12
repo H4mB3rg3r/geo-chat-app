@@ -2,9 +2,13 @@
   padding: 0;
   margin: 0;
 }
+body {
+  height: 100vh;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: ('chat.jpg');
+  height: 100vh !important;
+  
 
   /* text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +19,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100%;
+  background-image: url('/public/chat.jpg');
 }
 
 .attached-file-image {

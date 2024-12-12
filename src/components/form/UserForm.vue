@@ -229,12 +229,11 @@ onMounted(() => {
 });
 </script>
 
-
 <style scoped>
   .user-form {
     max-width: 400px;
     margin: auto;
-    padding: 5rem;
+    padding: 2rem;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -311,7 +310,7 @@ onMounted(() => {
     bottom: 0px;
     right: 2rem;
     width: 6rem;
-    height: 5rem;
+    height: 10rem;
     opacity: 0;
     cursor: pointer;
     top: 5rem;

@@ -1,8 +1,9 @@
 <template>
   <div  class="login-container ">
-    <div class="mt-5 is-flex flex-direction-column justify-content-center align-items-center">
-      <img class="logo" src="/public/geo-chat-orig-logo-removebg-preview.png" alt="">
-    <div class="login-form">
+    <div class="login-card">
+    <div class="mt-3 is-flex flex-direction-column justify-content-center align-items-center">
+      <img class="logo" src="/public/pwa-512x512.png" alt="">
+    <div class="login-form form-wrapper">
       <h2>Login</h2>
       <form @submit.prevent="handleLogin">
         <div class="form-group">
@@ -23,9 +24,9 @@
       </form>
     </div>
     </div>
-
   </div>
-  
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -68,17 +69,44 @@
 </script>
 
 <style scoped>
+.login-container {
+  background-image: url('chat.jpg');
+ 
+}
   .login-form {
-    max-width: 400px;
-    margin: auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #51f15ec0, #4056d6c5);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
   }
 
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.form-wrapper {
+  animation: fadeIn 1s ease-in-out;
+}
+
+
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
+  text-align: left;
   }
 
   .form-actions {
@@ -86,20 +114,62 @@
     justify-content: space-between;
   }
 
-  .btn {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-  }
+  label {
+  font-size: 15px;
+  color: #111010;
+  display: block;
+  margin-bottom: 5px;
+}
 
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
+.input-text-modal {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s;
+}
 
-  .btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
+.input-text-modal:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 10px rgba(46, 125, 50, 0.3);
+}
+
+  .btn-primary,
+.btn-secondary {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: all 0.3s;
+}
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1b5e20;
+}
+
+.btn-secondary {
+  background: white;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+}
+
+.btn-secondary:hover {
+  background: #f1f8e9;
+}
+.form-actions {
+  display: flex;
+  flex-direction: column; /* Stack the buttons vertically */
+  gap: 10px; /* Adds space between the two buttons */
+}
 </style>

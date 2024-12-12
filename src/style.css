@@ -4,13 +4,12 @@
 }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-image: url('chat.jpp');
+  background-image: url('chat.jpg');
 
   /* text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
-
 #app {
   display: flex;
   flex-direction: column;

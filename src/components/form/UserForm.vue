@@ -47,7 +47,7 @@
           {{ hasUser ? 'Update User' : 'Register User'}}
         </button>
         <button type="button" class="btn btn-secondary" @click="cancel">
-          Cancel
+          Back
         </button>
       </div>
     </form>

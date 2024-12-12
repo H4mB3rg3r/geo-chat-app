@@ -2,9 +2,8 @@
   <Modal />
   <div :key="appStore.thisChannel.uuid" class="chat-container">
     <div class="btn-container">
-      <button class="btn btn-secondary" @click="mapStore.checkPermission"> {{ mapStore.isMapLoading ? ' Please Wait...'
-        :
-        'Share Location' }} </button>
+      <button class="btn btn-secondary" @click="mapStore.checkPermission"> {{ mapStore.isMapLoading ? ' Please Wait...' :
+        'Share Locations' }} </button>
       <button class="btn btn-secondary go-back-btn" @click="clickGoBackBtn">Go Back </button>
       <!-- <button class="btn btn-secondary go-back-btn"
         @click="router.push({ name: 'home', params: { uuid: userStore.thisUser.uuid } })">Go Back </button> -->
@@ -21,33 +20,15 @@
     <div ref="messageContainer" class="message-list">
       <div v-for="(msg, index) in appStore.selectedMessages" :key="index" class="message"
         :class="{ 'own-message': msg.user?.uuid === appStore.user.uuid }">
-
+         
 
         <strong :class="{ 'own-message-name': msg.user?.uuid === appStore.user.uuid }" class="message-name">
-          <!-- {{ appStore.getUserFullname(msg.user?.uuid ?? '') }} -->
-          {{ msg.user?.fullname }}
-        </strong>
-        <div class="bubble-container">
-          <div style="margin-right: 0.2rem !important;" v-if="msg.user?.uuid !== appStore.user.uuid">
+          {{ appStore.getUserFullname(msg.user?.uuid ?? '') }}</strong>
 
-            <img v-if="msg.user?.image_url" :src="appStore.getUserImage(msg.user.image_url)" alt="Profile Picture"
-              class="profile-pic" />
-            <span v-else class="image-circle">{{ msg.user?.fullname.charAt(0).toUpperCase() }}</span>
-          </div>
 
-          <!-- <img v-else
-            :src="appStore.user.image_url ? appStore.getUserImage(appStore.user.image_url) : '/get-chat-circle-logo.png'"
-            alt="Profile Picture" class="profile-pic" /> -->
-          <span :class="{ 'own-message-content': msg.user?.uuid === appStore.user.uuid }" class="message-content"
-            v-html="appStore.decryptMessages[index]">
-          </span>
-          <div style="margin-left: 0.2rem !important;" v-if="msg.user?.uuid === appStore.user.uuid">
-            <img v-if="appStore.user.image_url" :src="appStore.getUserImage(appStore.user.image_url)"
-              alt=" Profile Picture" class="profile-pic" />
-            <span v-else class="image-circle">{{ msg.user?.fullname.charAt(0).toUpperCase() }}</span>
-          </div>
-        </div>
-
+        <span :class="{ 'own-message-content': msg.user?.uuid === appStore.user.uuid }" class="message-content"
+          v-html="appStore.decryptMessages[index]">
+        </span>
       </div>
     </div>
 
@@ -56,7 +37,7 @@
         class="file-input" />
       <button @click="triggerFileInput" class="attach-file-button ">Attach File</button>
       <EditorContent :editor="editor" class="editor" @keydown="handleKeyDown" />
-      <button @click="sendMessage" class="send-button">Send</button>
+      <button @click="sendMessage" class="send-button" :disable="isEditorEmpty">Send</button>
     </div>
   </div>
 </template>
@@ -76,12 +57,7 @@
   import { useHelperStore } from '@/stores/helper'
   import { useMapStore } from '@/stores/map'
   import Modal from './Modal.vue'
-  defineProps({
-    chat_uuid: {
-      type: String,
-      required: true,
-    },
-  })
+
   // Variable Declaration
   const appStore = useAppStore()
   const router = useRouter()
@@ -137,9 +113,11 @@
     ],
     content: '',
   })
+  const isEditorEmpty = computed(() => editor.value?.isEmpty ?? true)
 
   // Send Message Handler
   const sendMessage = async () => {
+    if (!editor.value || editor.value.isEmpty) return
     if (editor.value) {
       const content = editor.value.getHTML().trim()
       if (content) {
@@ -159,8 +137,10 @@
   // Handle Enter Key Press to Send Message
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault() // Prevent new line
-      sendMessage() // Send message
+      event.preventDefault()
+      if (editor.value && !editor.value.isEmpty) {
+        sendMessage()
+      }     
     }
   }
 
@@ -239,10 +219,10 @@
   )
 
   const friendName = computed(() => {
-    // const friend = channel.value.users?.find(f => f.uuid !== appStore.user.uuid)
-    // if (friend) {
-    return appStore.selectedFriend.fullname
-    // }
+    const friend = channel.value.users?.find(f => f.uuid !== appStore.user.uuid)
+    if (friend) {
+      return friend.fullname
+    }
   })
 
   const clickGoBackBtn = () => {
@@ -269,7 +249,7 @@
 
 <style scoped>
 
-.chat-container {
+  .chat-container {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -303,6 +283,7 @@
     
   }
 
+
   .channel-header {
     text-align: center;
     padding: 10px;
@@ -328,23 +309,21 @@
   max-width: 70%;
 }
 
+.own-message {
+  align-self: flex-end; /* Align own messages to the right */
+}
+
 .message-name {
   font-weight: bold;
   color: #555;
   font-size: 12px; /* Smaller font for names */
 }
 
-  /* .message-content {
-    background-color: #4c4c4c;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-    max-width: 40%;
-    word-wrap: break-word;
-  } */
+.own-message-name {
+  color: #333; /* Slightly darker name for own messages */
+}
 
-  .message-content {
+.message-content {
   background-color: #ffffff;
   color: #333;
   padding: 10px 15px;
@@ -355,21 +334,26 @@
   word-wrap: break-word;
   max-width: 100%;
 }
+
 .own-message-content {
   background-color: #d1ffd7; /* Light green for sent messages */
 }
+
 .message-content img {
   max-width: 100%;
   border-radius: 10px;
   margin-top: 5px;
 }
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .message {
     max-width: 90%; /* Allow messages to take up more space on smaller screens */
   }
 }
-.editor-container {
+
+
+  .editor-container {
     display: flex;
     padding: 15px;
     background-color: rgb(236, 223, 204);
@@ -377,22 +361,7 @@
     align-items: center;
   }
 
-  .own-message {
-  align-self: flex-end; /* Align own messages to the right */
-}
-
-.own-message-name {
-  color: #333; /* Slightly darker name for own messages */
-}
-  .editor-container {
-    display: flex;
-    padding: 10px;
-    background-color: white;
-    border-top: 1px solid #ddd;
-    align-items: center;
-  }
-
-   .editor {
+  .editor {
     flex: 1;
     padding: 10px;
     border: 4px solid #222020;
@@ -406,7 +375,7 @@
     color: white;
     border: none;
     border-radius: 20px;
-    margin-left: 10 px;
+    margin-left: 10px;
   }
   .send-button:disabled {
     background-color: #cccccc;
@@ -425,6 +394,7 @@
 
     .message-content {
       max-width: 40%;
+      
     }
 
     .btn-container {
@@ -436,39 +406,5 @@
       flex-direction: row;
       gap: 10px;
     }
-  }
-
-  .profile-pic {
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    object-fit: cover;
-    /* margin-right: 10px; */
-  }
-
-  .own-message .profile-pic {
-    order: 1;
-    /* Moves the profile picture to the right for own messages */
-
-    margin-right: 0;
-  }
-
-  .bubble-container {
-    display: flex;
-  }
-
-  .image-circle {
-    order: 100 !important;
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    background-color: #f0f0f0;
-    border: 2px solid blue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: blue;
   }
 </style>

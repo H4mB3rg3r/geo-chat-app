@@ -286,7 +286,7 @@
 
   .channel-header {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     background-color: rgb(105, 117, 101);
     color: rgb(245, 243, 243);
   }

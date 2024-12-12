@@ -240,7 +240,7 @@ onMounted(() => {
   }
 
   .form-group {
-    margin-bottom: 3.3rem;
+    margin-bottom: 1rem;
   }
 
   .form-actions {
@@ -284,7 +284,7 @@ onMounted(() => {
         justify-content: center;
         margin: 1rem 0rem 1rem 0rem;
     } */
-
+  
   .user-image {
     position: relative;
     display: inline-block;
@@ -326,12 +326,13 @@ onMounted(() => {
     cursor: not-allowed;
     color: #6c757d;
   }
-
+  
    /* Responsive styles for smaller screens */
    @media (max-width: 600px) {
     .user-form {
-      padding: 1rem;
+      padding: 3.3rem;
     }
+
 
     .form-actions {
       flex-direction: column;

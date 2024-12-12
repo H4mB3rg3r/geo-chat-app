@@ -345,12 +345,7 @@
   margin-top: 5px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .message {
-    max-width: 90%; /* Allow messages to take up more space on smaller screens */
-  }
-}
+
 
 
   .editor-container {
@@ -393,7 +388,7 @@
   @media (max-width: 768px) {
 
     .message-content {
-      max-width: 40%;
+      max-width: 90%;
       
     }
 

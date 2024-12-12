@@ -71,12 +71,11 @@
 <style scoped>
 .login-container {
   background-image: url('chat.jpg');
-  justify-content: center;
  
 }
   .login-form {
   background: linear-gradient(135deg, #51f15ec0, #4056d6c5);
-  padding: 30px;
+  padding: 40px;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;

@@ -4,7 +4,7 @@
 }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background: linear-gradient(135deg, #46e656c0, #5a6ccec5);
+  background-color: ('chat.jpg');
 
   /* text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

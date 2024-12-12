@@ -71,6 +71,7 @@
 <style scoped>
 .login-container {
   background-image: url('chat.jpg');
+  justify-content: center;
  
 }
   .login-form {
